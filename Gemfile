@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'awesome_print'
 gem 'annotate'
 gem 'stamp'
-
+gem 'font-awesome-rails'
 
 group :development do
   gem 'starter_generators'

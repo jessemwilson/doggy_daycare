@@ -22,9 +22,10 @@
         <td><%= owner.phone %></td>
         <td><%= owner.email %></td>
         <td><%= owner.evac_waiver %></td>
-        <td><%= link_to 'Show', owner %></td>
-        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
-        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to fa_icon('eye', text:'Show'), owner %></td>
+        <td><%= link_to fa_icon('pencil-square-o', text:'Edit'), edit_owner_path(owner) %></td>
+
+        <td><%= link_to fa_icon('trash-o', text:'Delete'), owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

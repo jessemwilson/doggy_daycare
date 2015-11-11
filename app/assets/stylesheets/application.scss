@@ -15,5 +15,23 @@
  */
 
  body {
- 	padding-top: 70px;
+ 	padding-top: 60px;
  }
+
+.jumbotron {
+ background-image: image-url('dogcar.jpg');
+ background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color:#AFBC9F;
+}
+
+#locationjumbotron {
+	background-image: image-url('beach.jpg');
+	color:#FFFFFF;
+}
+
+#locationjumbotron a{
+	color:#FFFFFF;
+
+	}
