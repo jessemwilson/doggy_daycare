@@ -5,3 +5,23 @@ class DogTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+
+# == Schema Information
+#
+# Table name: dogs
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  breed_id   :integer
+#  owner_id   :integer
+#  med_cond   :string
+#  vet        :string
+#  dob        :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_dogs_on_breed_id  (breed_id)
+#  index_dogs_on_owner_id  (owner_id)
+#
