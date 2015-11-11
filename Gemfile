@@ -29,6 +29,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# gem 'thin'
+gem 'awesome_print'
+gem 'annotate'
+gem 'stamp'
+
+
+group :development do
+  gem 'starter_generators'
+  gem 'faker'
+  gem 'populator'
+end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
