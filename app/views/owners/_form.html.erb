@@ -13,25 +13,26 @@
 
   <div class="field">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: "form-control", placeholder:'' %>
   </div>
   <div class="field">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: "form-control", placeholder:'' %>
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, class: "form-control", placeholder:'555-555-5555' %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: "form-control", placeholder:'' %>
   </div>
   <div class="field">
-    <%= f.label :evac_waiver %><br>
+    <%= f.label :evac_waiver, "Evacuation Waiver" %><br>
     <%= f.check_box :evac_waiver %>
   </div>
+  <%#TODO: fix button alignment or spacing%>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>

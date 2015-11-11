@@ -4,6 +4,8 @@ class Owner < ActiveRecord::Base
 	validates :first_name, :last_name, :phone, :email, presence:true
 end
 
+#TODO add phone number validation
+
 # == Schema Information
 #
 # Table name: owners
