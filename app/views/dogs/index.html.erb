@@ -20,7 +20,7 @@
       <tr>
         <td><%= dog.name %></td>
         <td><%= dog.breed %></td>
-        <td><%= dog.owner %></td>
+        <td><%= dog.owner.try(:name) %></td>
         <td><%= dog.med_cond %></td>
         <td><%= dog.vet %></td>
         <td><%= dog.dob %></td>

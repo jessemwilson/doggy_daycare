@@ -33,7 +33,12 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, :order => [:month, :day, :year], :start_year => Date.today.year - 16 %>
+  </div>
+  <div class="field">
+   <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
