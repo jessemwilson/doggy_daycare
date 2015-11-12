@@ -34,6 +34,7 @@ gem 'awesome_print'
 gem 'annotate'
 gem 'stamp'
 gem 'font-awesome-rails'
+gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'starter_generators'
