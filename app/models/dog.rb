@@ -4,8 +4,12 @@ class Dog < ActiveRecord::Base
 
   validates :name, :breed_id, :owner_id, :dob, presence: true
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { 
+  	medium: "400x400#",
+  	thumb: "100x100#" }, 
+  	default_url: ":style_missing.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
 end
 
 # == Schema Information
