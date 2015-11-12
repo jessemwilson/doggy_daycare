@@ -6,6 +6,10 @@
 </p>
 
 <p>
+<%= image_tag @dog.avatar.url(:medium) %>
+</p>
+
+<p>
   <strong>Breed:</strong>
   <%= @dog.breed %>
 </p>
@@ -29,6 +33,7 @@
   <strong>Dob:</strong>
   <%= @dog.dob %>
 </p>
+
 
 <%= link_to 'Edit', edit_dog_path(@dog) %> |
 <%= link_to 'Back', dogs_path %>
