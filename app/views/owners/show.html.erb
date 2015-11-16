@@ -24,5 +24,29 @@
   <%= @owner.evac_waiver %>
 </p>
 
+<div class="row"></div>
+
+  <% @owner.dogs.order('name').each do |dog| %>
+
+  <div class="col-xs-6 col-sm-4 col-md-3">
+
+    
+  <div class="panel panel-default <%= dog.in_daycare ? 'panel-success' : 'panel-default' %>">
+  <div class="panel-heading">
+  <h3 class="panel-title"><%= dog.name %> <%= dog.owner.try(:last_name) %></h3>
+  </div>
+  <div class="panel-body">
+    <p>
+    <%= image_tag dog.avatar.url(:medium), class: 'img-rounded img-responsive' %>
+    <%= link_to fa_icon('eye', text:'Show'), dog %>
+    <%= link_to fa_icon('pencil-square-o', text:'Edit'), edit_dog_path(dog) %>
+    <%= link_to fa_icon('bomb', text:'Delete'), dog, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+    </div>
+  </div>
+</div>
+    <% end %>
+    </div>
+
 <%= link_to 'Edit', edit_owner_path(@owner) %> |
 <%= link_to 'Back', owners_path %>

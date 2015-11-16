@@ -2,6 +2,13 @@
 
 <h1>Listing Owners</h1>
 
+<%= form_tag("/owners", method: :get, role: 'search', class: 'form-inline') do %>
+       <div class="form-group">
+         <%= text_field_tag(:search_owner, nil, placeholder: 'Jim', class: 'form-control input-sm') %>
+       </div>
+       <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
+     <% end %>
+
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -24,7 +31,6 @@
         <td><%= owner.evac_waiver %></td>
         <td><%= link_to fa_icon('eye', text:'Show'), owner %></td>
         <td><%= link_to fa_icon('pencil-square-o', text:'Edit'), edit_owner_path(owner) %></td>
-
         <td><%= link_to fa_icon('trash-o', text:'Delete'), owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

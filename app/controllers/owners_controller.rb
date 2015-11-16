@@ -5,6 +5,17 @@ class OwnersController < ApplicationController
   # GET /owners.json
   def index
     @owners = Owner.all
+     if params[:search_owner]
+     @owners = Owner.where("first_name LIKE ?", "%#{params[:search_owner]}%")
+     # if no dogs returns, give error message and list all dogs
+     if @owners.empty?
+       flash[:notice] = "Sorry, no result found."
+       @owners = Owner.all
+     end
+   # else, give me all dogs
+   else
+     @owners = Owner.all
+   end
   end
 
   # GET /owners/1
@@ -60,6 +71,9 @@ class OwnersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

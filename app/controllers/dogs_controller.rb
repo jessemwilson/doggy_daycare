@@ -1,10 +1,26 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
+  before_action :all_breeds, only: [:new, :edit, :index]
+  before_action :all_owners, only: [:new, :edit]
+
 
   # GET /dogs
   # GET /dogs.json
   def index
-    @dogs = Dog.order("name")
+
+    #if we have parameter, then only give me dogs that match
+    if params[:search]
+      @dogs = Dog.where("name LIKE ?", "%#{params[:search]}%")
+      if @dogs.size.zero?
+        flash[:notice] = "Sorry, no result found."
+        @dogs =Dog.all
+      end
+    elsif params[:breed_id]
+      @dogs =Dog.where(breed_id: params[:breed_id])
+    else
+      #else give me all dogs
+      @dogs = Dog.order("name")    
+    end
   end
 
   # GET /dogs/1
@@ -15,14 +31,12 @@ class DogsController < ApplicationController
   # GET /dogs/new
   def new
     @dog = Dog.new
-    @breeds=Breed.order("breed_name")
-    @owners=Owner.order("last_name")
+    
   end
 
   # GET /dogs/1/edit
   def edit
-    @breeds=Breed.order("breed_name")
-    @owners=Owner.order("last_name")
+   
   end
 
   # POST /dogs
@@ -32,7 +46,7 @@ class DogsController < ApplicationController
 
     respond_to do |format|
       if @dog.save
-        format.html { redirect_to @dog, notice: 'Dog was successfully created.' }
+        format.html { redirect_to @dogs, notice: 'Dog was successfully created.' }
         format.json { render :show, status: :created, location: @dog }
       else
         format.html { render :new }
@@ -46,7 +60,7 @@ class DogsController < ApplicationController
   def update
     respond_to do |format|
       if @dog.update(dog_params)
-        format.html { redirect_to @dog, notice: 'Dog was successfully updated.' }
+        format.html { redirect_to dogs_path, notice: 'Dog was successfully updated.' }
         format.json { render :show, status: :ok, location: @dog }
       else
         format.html { render :edit }
@@ -65,14 +79,25 @@ class DogsController < ApplicationController
     end
   end
 
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dog
       @dog = Dog.find(params[:id])
     end
 
+    def all_breeds
+     @breeds=Breed.order("breed_name")
+
+  end
+
+  def all_owners
+        @owners=Owner.order("last_name")
+  end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def dog_params
-      params.require(:dog).permit(:name, :breed_id, :owner_id, :med_cond, :vet, :dob, :avatar)
+      params.require(:dog).permit(:name, :breed_id, :owner_id, :med_cond, :vet, :dob, :avatar, :in_daycare)
     end
 end

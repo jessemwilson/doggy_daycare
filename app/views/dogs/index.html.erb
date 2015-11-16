@@ -2,31 +2,45 @@
 <h1>Listing Dogs</h1>
 
 <div class="row"></div>
-
+<%= link_to "All", dogs_path, class:'btn btn-default' %>
+<% @breeds.each do |breed| %>
+  <a href="?breed_id=<%= breed.id%>" class= "btn btn-default"><%=breed.breed_name%></a>
+<% end %>
 <% @dogs.each do |dog| %>
 
   <div class="col-xs-6 col-sm-4 col-md-3">
 
-    
-  <div class="panel panel-default">
+  <div class="panel panel-default <%= dog.in_daycare ? 'panel-success' : 'panel-default' %>">
   <div class="panel-heading">
   <h3 class="panel-title"><%= dog.name %> <%= dog.owner.try(:last_name) %></h3>
   </div>
   <div class="panel-body">
-    <p>
+    
     <%= image_tag dog.avatar.url(:medium), class: 'img-rounded img-responsive' %>
-    <%= link_to fa_icon('eye', text:'Show'), dog %>
-    <%= link_to fa_icon('pencil-square-o', text:'Edit'), edit_dog_path(dog) %>
-    <%= link_to fa_icon('bomb', text:'Delete'), dog, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <p>
+      <%= form_for(dog, url: dog_path(dog), html: {class:'form-inline'}) do |f| %>
+      <% if dog.in_daycare %>
+        <%= f.hidden_field :in_daycare, value: false %>
+        <%= f.submit "Check Out", class: "btn btn-primary" %>
+      <% else %>
+        <%= f.hidden_field :in_daycare, value: true %>
+        <%= f.submit "Check In", class: "btn btn-primary" %>
+      <% end %>
+      <% end %>
+
+
+      <%= link_to fa_icon('eye', text:'Show'), dog %>
+      <%= link_to fa_icon('pencil-square-o', text:'Edit'), edit_dog_path(dog) %>
+      <%= link_to fa_icon('bomb', text:'Delete'), dog, method: :delete, data: {confirm: 'Are you sure?'} %>
     </p>
     </div>
   </div>
 </div>
     <% end %>
+
     </div>
 
-
+<%= link_to 'New Dog', new_dog_path, class: "btn btn-success" %>
 
 <br>
 
-<%= link_to 'New Dog', new_dog_path %>
