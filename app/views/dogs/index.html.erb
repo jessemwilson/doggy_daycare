@@ -1,11 +1,20 @@
 
 <h1>Listing Dogs</h1>
 
-<div class="row"></div>
+ <%= form_tag("/dogs", method: :get, role: 'search', class: 'navbar-form navbar-left') do %>
+      <div class="form-group">
+      <%= text_field_tag(:search, nil, placeholder: 'Fido', class: 'form-control input-sm') %>
+      </div>
+      <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
+      <% end  %>
+      
+<div class="row">
 <%= link_to "All", dogs_path, class:'btn btn-default' %>
 <% @breeds.each do |breed| %>
   <a href="?breed_id=<%= breed.id%>" class= "btn btn-default"><%=breed.breed_name%></a>
 <% end %>
+</div>
+<div class="row" id="dog_grid"></div>
 <% @dogs.each do |dog| %>
 
   <div class="col-xs-6 col-sm-4 col-md-3">
