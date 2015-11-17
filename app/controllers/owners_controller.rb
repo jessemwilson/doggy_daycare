@@ -8,7 +8,8 @@ class OwnersController < ApplicationController
   def index
     @owners = Owner.all
      if params[:search_owner]
-     @owners = Owner.where("first_name LIKE ?", "%#{params[:search_owner]}%")
+     @owners = Owner.where("first_name LIKE ? or last_name LIKE ?",  "%#{params[:search_owner]}%", "%#{params[:search_owner]}%") 
+             
      # if no dogs returns, give error message and list all dogs
      if @owners.empty?
        flash[:alert] = "Sorry, no result found."

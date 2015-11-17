@@ -17,29 +17,37 @@
 @import "font-awesome";
 
  body {
- 	padding-top: 60px;
+ 	padding-top: 50px;
  }
 
 .jumbotron {
- background-image: image-url('dogcar.jpg');
+ background-image: image-url('puppybeach.jpg');
  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  color:#70CAE1;
+  color:#FFFFFF;
 /*  size:80%;
 */  padding-top:30%;
 	padding-bottom:30%;
 	padding-right:5%;
 	padding-left:5%;
 height: 100%;
+text-align:right;
+margin-bottom:0;
 }
 
 
 
 #locationjumbotron {
 	background-image: image-url('beach.jpg');
+
 	color:#FFFFFF;
-	padding:5%;
+padding-top:10%;
+	padding-bottom:30%;
+	padding-right:5%;
+	padding-left:5%;
+height: 100%;
+	text-align:left;
 }
 
 #locationjumbotron a{
