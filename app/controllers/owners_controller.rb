@@ -1,5 +1,7 @@
 class OwnersController < ApplicationController
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
 
   # GET /owners
   # GET /owners.json
@@ -9,7 +11,7 @@ class OwnersController < ApplicationController
      @owners = Owner.where("first_name LIKE ?", "%#{params[:search_owner]}%")
      # if no dogs returns, give error message and list all dogs
      if @owners.empty?
-       flash[:notice] = "Sorry, no result found."
+       flash[:alert] = "Sorry, no result found."
        @owners = Owner.all
      end
    # else, give me all dogs

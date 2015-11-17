@@ -3,6 +3,7 @@ class DogsController < ApplicationController
   before_action :all_breeds, only: [:new, :edit, :index]
   before_action :all_owners, only: [:new, :edit]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
 
 
   # GET /dogs
