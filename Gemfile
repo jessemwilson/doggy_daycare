@@ -35,6 +35,7 @@ gem 'annotate'
 gem 'stamp'
 gem 'font-awesome-rails'
 gem "paperclip", "~> 4.3"
+gem 'devise'
 
 group :development do
   gem 'starter_generators'
