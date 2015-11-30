@@ -11,12 +11,13 @@
 
 <p>
   <strong>Breed:</strong>
-  <%= @dog.breed %>
+  <%= @dog.breed.try(:breed_name) %>
 </p>
 
 <p>
   <strong>Owner:</strong>
-  <%= @dog.owner %>
+  <%= @dog.owner.try(:first_name) %>
+  <%= @dog.owner.try(:last_name) %>
 </p>
 
 <p>
