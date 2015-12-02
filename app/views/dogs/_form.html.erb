@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<form>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, class: 'form-control'%>
@@ -31,16 +31,21 @@
     <%= f.label :vet %><br>
     <%= f.text_field :vet, class: 'form-control' %>
   </div>
+  <br>
   <div class="field">
     <%= f.label :dob %><br>
     <%= f.date_select :dob, :order => [:month, :day, :year], :start_year => Date.today.year - 16 %>
   </div>
+  <br>
   <div class="field">
    <%= f.label :avatar %><br>
     <%= f.file_field :avatar %>
 
   </div>
+  </form>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>
